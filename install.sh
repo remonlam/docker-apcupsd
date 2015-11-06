@@ -21,6 +21,8 @@ rm -r /etc/apcupsd/apcupsd.conf
 rm -r /etc/apache2/apache2.conf
 
 # Wget config files from github
+wget -P / https://raw.githubusercontent.com/remonlam/rpi-docker-apcups/master/entrypoint.sh
+# Wget config files from github
 wget -P /etc/default https://raw.githubusercontent.com/remonlam/rpi-ups/master/apcupsd
 
 # Wget config files from github
