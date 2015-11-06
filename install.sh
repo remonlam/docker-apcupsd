@@ -43,4 +43,8 @@ service apcupsd restart
 # Restart apache (httpd) service
 service apache2 restart
 
+a2enmod cgi
+
+service apache2 restart
+
 # ACCESS THE UPC WEB PAGE: http://YOUR-PI-UPS/cgi-bin/apcupsd/multimon.cgi
