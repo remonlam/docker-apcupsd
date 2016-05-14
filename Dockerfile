@@ -9,7 +9,7 @@ RUN git clone https://github.com/remonlam/rpi-docker-apcups.git
 ##    chmod 755 /./entrypoint.sh \
 ##    chmod 755 /tmp/./install.sh
 RUN /rpi-docker-apcups/./install.sh
-RUN copy /rpi-docker-apcups/entrypoint.sh /
+RUN cp /rpi-docker-apcups/entrypoint.sh /
 
 EXPOSE 80
 CMD ["entrypoint.sh"]
