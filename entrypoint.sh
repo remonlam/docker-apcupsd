@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "ACCESS THE UPC WEB PAGE: http://YOUR-PI-UPS/cgi-bin/apcupsd/multimon.cgi"
 # Start APC Service
 service apcupsd start
 
