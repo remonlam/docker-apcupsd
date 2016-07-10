@@ -1,7 +1,7 @@
 FROM remonlam/rpi-rasbian:jessie
 MAINTAINER Remon Lam <remon@containerstack.io>
 
-RUN apt-get update && apt-get install -y wget git ntp && apt-get clean
+RUN apt-get update && apt-get install -y wget git && apt-get clean
 RUN git clone https://github.com/remonlam/rpi-docker-apcups.git
 
 RUN /rpi-docker-apcups/./install.sh
