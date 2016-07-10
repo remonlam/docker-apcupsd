@@ -3,9 +3,6 @@
 
 For some reason the Arch Linux community stopped providing an pre-build image for the Raspberry Pi.
 
-
-Just a placeholder file, this will be replaced when I have the time to write things down ;-)
-
 ## Pull sources trough git
 git clone https://github.com/remonlam/rpi-docker-apcups.git
 
