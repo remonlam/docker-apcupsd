@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# THIS SCIRPT WILL UPTDATE THE APC IMAGE ON THE DOCKER NODE;
+
 docker pull remonlam/apc-web
 docker stop $(docker ps -a -q)
 docker rm apc-web
