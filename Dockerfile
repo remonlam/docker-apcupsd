@@ -13,4 +13,4 @@ RUN cp /rpi-docker-apcups/entrypoint.sh /
 RUN cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 
 EXPOSE 80
-CMD ["entrypoint.sh"]
+CMD ["/entrypoint.sh"]
