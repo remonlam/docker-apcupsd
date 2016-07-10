@@ -10,6 +10,5 @@ RUN git clone https://github.com/remonlam/rpi-docker-apcups.git && \
     rm -rf /rpi-docker-apcups && \
     cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 
-
 EXPOSE 80
 CMD ["/entrypoint.sh"]
