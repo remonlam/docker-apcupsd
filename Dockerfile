@@ -16,7 +16,6 @@ RUN rm -r /etc/default/apcupsd && \
 
 RUN cp -r entrypoint.sh / && \
     cp -r /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
-    cp -r && \
     cp -r /etc/default/apcupsd && \
     cp -r ../sources/apcupsd.conf /etc/apcupsd/ && \
     cp -r ../sources/apache2.conf /etc/apache2/
