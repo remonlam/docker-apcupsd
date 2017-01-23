@@ -1,7 +1,8 @@
 FROM remonlam/rpi-rasbian:jessie
 MAINTAINER Remon Lam <remon@containerstack.io>
 
-ENV TERM=xter
+ENV TERM="xter"
+ENV UPS="Smart-UPS 3000 RM"
 
 # Make sure we use the latest stuff and install apache & apc apps:
 RUN apt-get update && \
@@ -14,11 +15,11 @@ RUN rm -r /etc/default/apcupsd && \
     rm -r /etc/apcupsd/apcupsd.conf && \
     rm -r /etc/apache2/apache2.conf
 
-RUN cp -r entrypoint.sh / && \
-    cp -r /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
-    cp -r /etc/default/apcupsd && \
-    cp -r ../sources/apcupsd.conf /etc/apcupsd/ && \
-    cp -r ../sources/apache2.conf /etc/apache2/
+RUN cp entrypoint.sh / && \
+    cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+    cp /etc/default/apcupsd && \
+    cp ../sources/apcupsd.conf /etc/apcupsd/ && \
+    cp ../sources/apache2.conf /etc/apache2/
 
 RUN mkdir -p /etc/apache2/conf.d
 
