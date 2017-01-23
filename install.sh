@@ -8,17 +8,11 @@
 # Install APCUPSD on Raspbian
 
 # Update system
-apt-get update
-#apt-get -y upgrade
-#apt-get clean
 
 # Install APCUPS, APCUPSD-CGI and Apache
 apt-get -y install apcupsd apcupsd-cgi apache2 --quiet
 
-# Remove orginal apcupsd config files
-rm -r /etc/default/apcupsd
-rm -r /etc/apcupsd/apcupsd.conf
-rm -r /etc/apache2/apache2.conf
+
 
 # Wget config files from github
 wget -P /etc/default https://raw.githubusercontent.com/remonlam/rpi-ups/master/apcupsd

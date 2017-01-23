@@ -2,18 +2,33 @@ FROM remonlam/rpi-rasbian:jessie
 MAINTAINER Remon Lam <remon@containerstack.io>
 
 ENV TERM=xter
-RUN apt-get update && \
-    apt-get install -y wget git && \
-    apt-get clean
-RUN git clone https://github.com/remonlam/rpi-docker-apcups.git && \
-    /rpi-docker-apcups/./install.sh && \
-    cp /rpi-docker-apcups/entrypoint.sh / && \
-    rm -rf /rpi-docker-apcups && \
-    cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 
-# /rpi-docker-apcups/./install.sh
-#RUN cp /rpi-docker-apcups/entrypoint.sh /
-#RUN cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+# Make sure we use the latest stuff and install apache & apc apps:
+RUN apt-get update && \
+    apt-get install -y wget apcupsd apcupsd-cgi apache2 --quiet && \
+    apt-get update && \
+    apt-get -y upgrade && \
+    apt-get clean && \
+
+# Remove orginal apcupsd config files
+RUN rm -r /etc/default/apcupsd && \
+    rm -r /etc/apcupsd/apcupsd.conf && \
+    rm -r /etc/apache2/apache2.conf
+
+RUN cp -r entrypoint.sh / && \
+    cp -r /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+    cp -r && \
+    cp -r /etc/default/apcupsd && \
+    cp -r ../sources/apcupsd.conf /etc/apcupsd/ && \
+    cp -r ../sources/apache2.conf /etc/apache2/
+
+RUN mkdir -p /etc/apache2/conf.d
+
+# Restart apcupsd service
+RUN service apcupsd restart && \
+    service apache2 restart && \
+    a2enmod cgi && \
+    service apache2 restart
 
 EXPOSE 80
 CMD ["/entrypoint.sh"]
