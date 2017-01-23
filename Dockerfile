@@ -7,7 +7,7 @@ ENV TERM=xter
 RUN apt-get install -y wget apcupsd apcupsd-cgi apache2 --quiet && \
     apt-get update && \
     apt-get -y upgrade && \
-    apt-get clean && \
+    apt-get clean
 
 # Remove orginal apcupsd config files
 #RUN rm -r /etc/default/apcupsd && \
