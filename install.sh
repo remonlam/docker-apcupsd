@@ -22,6 +22,7 @@ rm -r /etc/apache2/apache2.conf
 
 # Wget config files from github
 wget -P /etc/default https://raw.githubusercontent.com/remonlam/rpi-ups/master/apcupsd
+# cp /sources/apcupsd /etc/default
 
 # Wget config files from github
 wget -P /etc/apcupsd https://raw.githubusercontent.com/remonlam/rpi-ups/master/apcupsd.conf
