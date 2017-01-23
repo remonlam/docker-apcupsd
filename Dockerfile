@@ -4,8 +4,7 @@ MAINTAINER Remon Lam <remon@containerstack.io>
 ENV TERM=xter
 
 # Make sure we use the latest stuff and install apache & apc apps:
-RUN apt-get update && \
-    apt-get install -y wget apcupsd apcupsd-cgi apache2 --quiet && \
+RUN apt-get install -y wget apcupsd apcupsd-cgi apache2 --quiet && \
     apt-get update && \
     apt-get -y upgrade && \
     apt-get clean && \
