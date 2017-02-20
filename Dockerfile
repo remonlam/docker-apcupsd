@@ -1,8 +1,10 @@
 FROM remonlam/rpi-rasbian:jessie
 MAINTAINER Remon Lam <remon@containerstack.io>
 
+ENV ARCH="ARM"
 ENV TERM="xter"
 ENV UPS="Smart-UPS 3000 RM"
+ENV URL="http://YOUR-PI-UPS/cgi-bin/apcupsd/multimon.cgi"
 
 # Make sure we use the latest stuff and install apache & apc apps:
 RUN apt-get update && \
@@ -13,21 +15,22 @@ RUN apt-get update && \
 # Remove orginal apcupsd config files
 RUN rm -r /etc/default/apcupsd && \
     rm -r /etc/apcupsd/apcupsd.conf && \
-    rm -r /etc/apache2/apache2.conf
+    rm -r /etc/apache2/apache2.conf && \
+    cp -rf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 
-RUN cp entrypoint.sh / && \
-    cp /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
-    cp /etc/default/apcupsd && \
-    cp ../sources/apcupsd.conf /etc/apcupsd/ && \
-    cp ../sources/apache2.conf /etc/apache2/
+COPY entrypoint.sh /
+COPY sources/apcupsd /etc/default/
+COPY sources/apcupsd.conf /etc/apcupsd/
+COPY sources/apache2.conf /etc/apache2/
 
 RUN mkdir -p /etc/apache2/conf.d
 
 # Restart apcupsd service
-RUN service apcupsd restart && \
-    service apache2 restart && \
-    a2enmod cgi && \
-    service apache2 restart
+RUN service apcupsd stop
+RUN service apache2 stop
+RUN a2enmod cgi
+RUN service apcupsd start
+RUN service apache2 start
 
 EXPOSE 80
 CMD ["/entrypoint.sh"]
