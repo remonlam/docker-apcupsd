@@ -11,7 +11,8 @@ docker build -t apc-web .
 NOTE: building the Docker image could take some time on a RPI2 it takes about 15 minutes
 
 ## To run the container:
-docker run -d -p 80:80 --name apc-web --hostname $(hostname) --device=/dev/usb/hiddev0 remonlam/apc-web:latest
+docker run -d --name apc-web --hostname $(hostname) -p 80:80 --device=/dev/usb/hiddev0 remonlam/rpi-docker-apcups:latest
+docker run -d --name apc-man --hostname $(hostname) --device=/dev/usb/hiddev0 remonlam/rpi-docker-apcups:latest
 
 ## Docker HUB
-The Docker images is also stored @ https://hub.docker.com/r/remonlam/apc-web/
+The Docker images is also stored @ https://hub.docker.com/r/remonlam/rpi-docker-apcups/
