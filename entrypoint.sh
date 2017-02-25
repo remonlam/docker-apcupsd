@@ -8,4 +8,4 @@ service apcupsd start
 service apache2 start
 
 # Leave this file  open
-tail -F /var/log/apache2/access.log
+tail -F /var/log/apcupsd.events
