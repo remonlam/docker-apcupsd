@@ -10,7 +10,7 @@ sudo su -
 passwd
 
 ## Set hostname
-echo "ups3" > /etc/hostname
+echo "ups1" > /etc/hostname
 
 ## Set timezone (EU-NL-AMS)
 cp -rf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
@@ -23,6 +23,7 @@ echo "gpu_mem=16" >> /boot/config.txt
 
 ## Enable roots access with ssh
 /etc/ssh/sshd_config [PermitRootLogin without-password / PermitRootLogin yes]
+sed -i s/"PermitRootLogin without-password"/"PermitRootLogin yes"/g /etc/ssh/sshd_config
 systemctl restart ssh
 
 ## Update system
@@ -45,3 +46,10 @@ echo 'network={
               ssid="WifiNetworkName"
               psk="SuperSecretPassword"
 }' >> /etc/wpa_supplicant/wpa_supplicant.conf
+
+
+## Setup IP on ethernet interface
+echo "interface eth0
+static ip_address=192.168.0.4/24
+static routers=192.168.0.254
+static domain_name_servers=10.10.100.100 10.10.100.110" >> /etc/dhcpcd.conf
