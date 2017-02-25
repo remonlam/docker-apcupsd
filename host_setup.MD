@@ -37,19 +37,19 @@ curl -sSL https://get.docker.com | sh
 
 
 ### Setup IP on WiFi interface
-echo "interface wlan0
-static ip_address=192.168.0.10/24
-static routers=192.168.0.254
-static domain_name_servers=192.168.0.100 8.8.8.8" >> /etc/dhcpcd.conf
+echo "interface wlan0 <br>
+static ip_address=192.168.0.10/24 <br>
+static routers=192.168.0.254 <br>
+static domain_name_servers=192.168.0.100 8.8.8.8" >> /etc/dhcpcd.conf <br>
 
-echo 'network={
-              ssid="WifiNetworkName"
-              psk="SuperSecretPassword"
-}' >> /etc/wpa_supplicant/wpa_supplicant.conf
+echo 'network={ <br>
+              ssid="WifiNetworkName" <br>
+              psk="SuperSecretPassword" <br>
+}' >> /etc/wpa_supplicant/wpa_supplicant.conf <br>
 
 
 ### Setup IP on ethernet interface
-echo "interface eth0
-static ip_address=192.168.0.4/24
-static routers=192.168.0.254
+echo "interface eth0 <br>
+static ip_address=192.168.0.4/24 <br>
+static routers=192.168.0.254 <br>
 static domain_name_servers=10.10.100.100 10.10.100.110" >> /etc/dhcpcd.conf
