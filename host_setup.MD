@@ -32,7 +32,7 @@ apt-get upgrade -y
 
 ### Install Docker
 apt-get install -y tar \
-                htop
+                htop <br>
 curl -sSL https://get.docker.com | sh
 
 
