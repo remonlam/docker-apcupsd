@@ -2,7 +2,7 @@ FROM remonlam/rpi-rasbian:jessie
 MAINTAINER Remon Lam <remon@containerstack.io>
 
 ENV ARCH="ARM"
-ENV TERM="xter"
+ENV TERM="xterm"
 ENV UPS="Smart-UPS 3000 RM"
 ENV URL="http://YOUR-PI-UPS/cgi-bin/apcupsd/multimon.cgi"
 
