@@ -26,11 +26,11 @@ echo "gpu_mem=16" >> /boot/config.txt
 sed -i s/"PermitRootLogin without-password"/"PermitRootLogin yes"/g /etc/ssh/sshd_config
 systemctl restart ssh
 
-## Update system
+### Update system
 apt-get update && \
 apt-get upgrade -y
 
-## Install Docker
+### Install Docker
 apt-get install -y tar \
                 htop
 curl -sSL https://get.docker.com | sh
