@@ -22,16 +22,16 @@ deluser --remove-home pi
 echo "gpu_mem=16" >> /boot/config.txt
 
 ### Enable roots access with ssh
-/etc/ssh/sshd_config [PermitRootLogin without-password / PermitRootLogin yes]
-sed -i s/"PermitRootLogin without-password"/"PermitRootLogin yes"/g /etc/ssh/sshd_config
+/etc/ssh/sshd_config [PermitRootLogin without-password / PermitRootLogin yes] <br>
+sed -i s/"PermitRootLogin without-password"/"PermitRootLogin yes"/g /etc/ssh/sshd_config <br>
 systemctl restart ssh
 
 ### Update system
-apt-get update && \
+apt-get update && \ <br>
 apt-get upgrade -y
 
 ### Install Docker
-apt-get install -y tar \
+apt-get install -y tar \ <br>
                 htop <br>
 curl -sSL https://get.docker.com | sh
 
