@@ -5,6 +5,7 @@ ENV ARCH="ARM"
 ENV TERM="xterm"
 ENV UPS="Smart-UPS 3000 RM"
 ENV URL="http://YOUR-PI-UPS/cgi-bin/apcupsd/multimon.cgi"
+ENV DEBIAN_FRONTEND="noninteractive"
 
 # Put cron logfiles into a volume. This also works around bug # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=810669
 # caused by base image using old version of coreutils
@@ -15,9 +16,13 @@ ENV URL="http://YOUR-PI-UPS/cgi-bin/apcupsd/multimon.cgi"
 
 # Make sure we use the latest stuff and install apache & apc apps:
 RUN apt-get update && \
-    apt-get install -y wget apcupsd apcupsd-cgi apache2 postfix --quiet && \
-    apt-get -y upgrade && \
+    apt-get install -y wget apcupsd apcupsd-cgi apache2 postfix nano --quiet && \
+    #apt-get -y upgrade && \
     apt-get clean
+
+RUN echo "postfix postfix/mailname string your.hostname.com" | debconf-set-selections &&\
+    echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections &&\
+    apt-get install -y mailutils
 
 # Remove orginal apcupsd config files
 RUN rm -r /etc/default/apcupsd && \
