@@ -15,7 +15,7 @@ ENV URL="http://YOUR-PI-UPS/cgi-bin/apcupsd/multimon.cgi"
 
 # Make sure we use the latest stuff and install apache & apc apps:
 RUN apt-get update && \
-    apt-get install -y wget apcupsd apcupsd-cgi apache2 --quiet && \
+    apt-get install -y wget apcupsd apcupsd-cgi apache2 postfix --quiet && \
     apt-get -y upgrade && \
     apt-get clean
 
