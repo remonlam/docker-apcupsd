@@ -16,25 +16,40 @@ ENV DEBIAN_FRONTEND="noninteractive"
 
 # Make sure we use the latest stuff and install apache & apc apps:
 RUN apt-get update && \
-    apt-get install -y wget apcupsd apcupsd-cgi apache2 postfix nano --quiet && \
+    apt-get install -y wget apcupsd apcupsd-cgi apache2 postfix mailutils nano --quiet && \
     #apt-get -y upgrade && \
     apt-get clean
 
-RUN echo "postfix postfix/mailname string your.hostname.com" | debconf-set-selections &&\
-    echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections &&\
-    apt-get install -y mailutils
+#RUN echo "postfix postfix/mailname string your.hostname.com" | debconf-set-selections &&\
+#    echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections &&\
+#    apt-get install -y mailutils
 
 # Remove orginal apcupsd config files
 RUN rm -r /etc/default/apcupsd && \
     rm -r /etc/apcupsd/apcupsd.conf && \
     rm -r /etc/apache2/apache2.conf && \
-    cp -rf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+    rm -r /etc/apcupsd/appcontrol && \
+    rm -r /etc/postfix/master.cf && \
+    rm -r /etc/postfix/main.cf && \
+    rm -r /etc/aliases
 
+# Set date/time
+RUN cp -rf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+
+# Copy sources
 COPY entrypoint.sh /
 COPY sources/apcupsd /etc/default/
 COPY sources/apcupsd.conf /etc/apcupsd/
+COPY sources/apccontrol /etc/apcupsd/
 COPY sources/apache2.conf /etc/apache2/
+COPY sources/master.cf /etc/postfix/
+COPY sources/main.cf /etc/postfix/
+COPY sources/aliases
 
+# Create aliases
+RUN newaliases
+
+# Create apache dir
 RUN mkdir -p /etc/apache2/conf.d
 
 # Restart apcupsd service
