@@ -17,7 +17,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 # Make sure we use the latest stuff and install apache & apc apps:
 RUN apt-get update && \
     apt-get install -y wget apcupsd apcupsd-cgi apache2 postfix mailutils nano --quiet && \
-    #apt-get -y upgrade && \
+    apt-get -y upgrade && \
     apt-get clean
 
 #RUN echo "postfix postfix/mailname string your.hostname.com" | debconf-set-selections &&\
@@ -28,7 +28,6 @@ RUN apt-get update && \
 RUN rm -r /etc/default/apcupsd && \
     rm -r /etc/apcupsd/apcupsd.conf && \
     rm -r /etc/apache2/apache2.conf && \
-    #rm -r /etc/apcupsd/appcontrol && \
     rm -r /etc/postfix/master.cf && \
     rm -r /etc/postfix/main.cf && \
     rm -r /etc/aliases
