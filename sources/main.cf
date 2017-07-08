@@ -9,7 +9,7 @@ myhostname = updateNodeName
 # NOTE: This must be the MX server for the account you wish to deliver email to
 # or an open relay (but you hopefully won't find one of them). In my case, this
 # is Google's first MX server (which can be found by doing an MX lookup on my domain).
-relayhost = containerstack-io.mail.protection.outlook.com
+relayhost = updateMailRelay
 
 # Which interfaces to listen on. We don't want anyone connected to our Pi to send email,
 # so we set this to the local loopback interface only.

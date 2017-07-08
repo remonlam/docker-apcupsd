@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update && \
     apt-get install -y wget apcupsd apcupsd-cgi apache2 postfix mailutils --quiet && \
     apt-get -y upgrade && \
-    apt-get clean autoclean && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Remove orginal apcupsd config files
