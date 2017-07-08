@@ -81,16 +81,13 @@ case "$1" in
     ;;
     onbattery)
 	echo "Power failure on UPS ${2}. Running on batteries." | ${WALL}
-	mail -s "WARNING - UPS running on batteries" remon@containerstack.io
     ;;
     offbattery)
 	echo "Power has returned on UPS ${2}..." | ${WALL}
-	mail -s "INFO - Power has returned on UPS" remon@containerstack.io
     ;;
     mainsback)
 	if [ -f /etc/apcupsd/powerfail ] ; then
 	   printf "Continuing with shutdown."  | ${WALL}
-	mail -s "INFO - UPS running on main power source, power restored" remon@containerstack.io
 	fi
     ;;
     failing)
