@@ -28,7 +28,7 @@ RUN apt-get update && \
 RUN rm -r /etc/default/apcupsd && \
     rm -r /etc/apcupsd/apcupsd.conf && \
     rm -r /etc/apache2/apache2.conf && \
-    rm -r /etc/apcupsd/appcontrol && \
+    #rm -r /etc/apcupsd/appcontrol && \
     rm -r /etc/postfix/master.cf && \
     rm -r /etc/postfix/main.cf && \
     rm -r /etc/aliases
@@ -44,7 +44,7 @@ COPY sources/apccontrol /etc/apcupsd/
 COPY sources/apache2.conf /etc/apache2/
 COPY sources/master.cf /etc/postfix/
 COPY sources/main.cf /etc/postfix/
-COPY sources/aliases
+COPY sources/aliases /etc/
 
 # Create aliases
 RUN newaliases
