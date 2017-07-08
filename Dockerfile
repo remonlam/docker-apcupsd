@@ -7,22 +7,12 @@ ENV UPS="Smart-UPS 3000 RM"
 ENV URL="http://YOUR-PI-UPS/cgi-bin/apcupsd/multimon.cgi"
 ENV DEBIAN_FRONTEND="noninteractive"
 
-# Put cron logfiles into a volume. This also works around bug # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=810669
-# caused by base image using old version of coreutils
-# which causes "tail: unrecognized file system type 0x794c7630 for '/var/log/cron.log'"
-# when using docker with overlay storage driver.
-#VOLUME /var/log/
-
-
 # Make sure we use the latest stuff and install apache & apc apps:
 RUN apt-get update && \
-    apt-get install -y wget apcupsd apcupsd-cgi apache2 postfix mailutils nano --quiet && \
+    apt-get install -y wget apcupsd apcupsd-cgi apache2 postfix mailutils --quiet && \
     apt-get -y upgrade && \
-    apt-get clean
-
-#RUN echo "postfix postfix/mailname string your.hostname.com" | debconf-set-selections &&\
-#    echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections &&\
-#    apt-get install -y mailutils
+    apt-get clean autoclean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Remove orginal apcupsd config files
 RUN rm -r /etc/default/apcupsd && \
@@ -44,9 +34,6 @@ COPY sources/apache2.conf /etc/apache2/
 COPY sources/master.cf /etc/postfix/
 COPY sources/main.cf /etc/postfix/
 COPY sources/aliases /etc/
-
-# Change hostname in main.cf
-#RUN sed -i s/updateNodeName/$HOSTNAME/g /etc/postfix/main.cf
 
 # Create aliases
 RUN newaliases
