@@ -3,7 +3,7 @@
 alias_maps = hash:/etc/aliases
 
 # This sets the hostname, which will be used for outgoing email
-myhostname = ups4.c-s.io
+myhostname = updateNodeName
 
 # This is the mailserver to connect to deliver email
 # NOTE: This must be the MX server for the account you wish to deliver email to

@@ -45,6 +45,9 @@ COPY sources/master.cf /etc/postfix/
 COPY sources/main.cf /etc/postfix/
 COPY sources/aliases /etc/
 
+# Change hostname in main.cf
+#RUN sed -i s/updateNodeName/$HOSTNAME/g /etc/postfix/main.cf
+
 # Create aliases
 RUN newaliases
 
