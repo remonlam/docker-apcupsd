@@ -1,9 +1,9 @@
 # Defaults for apcupsd initscript
 
-###############################################
-# Author: Remon Lam                           #
-# Source: https://github.com/remonlam/rpi-ups #
-###############################################
+######################################################
+# Author: Remon Lam                                  #
+# Source: https://github.com/remonlam/docker-apcupsd #
+######################################################
 
 
 # Apcupsd-devel internal configuration
