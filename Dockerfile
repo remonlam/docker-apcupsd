@@ -48,5 +48,5 @@ RUN a2enmod cgi
 RUN service apcupsd start
 RUN service apache2 start
 
-EXPOSE 80
+EXPOSE 80 3551/tcp 3551/udp
 CMD ["/entrypoint.sh"]
