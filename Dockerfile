@@ -1,4 +1,4 @@
-FROM armhf/debian:jessie
+FROM resin/rpi-raspbian:jessie
 MAINTAINER Remon Lam <remon@containerstack.io>
 
 ENV ARCH="ARM"
