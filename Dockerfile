@@ -1,4 +1,5 @@
-FROM resin/rpi-raspbian:jessie
+FROM remonlam/rpi-rasbian:jessie
+#FROM resin/rpi-raspbian:jessie
 MAINTAINER Remon Lam <remon@containerstack.io>
 
 ENV ARCH="ARM"
