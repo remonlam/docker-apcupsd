@@ -12,6 +12,10 @@
 #   platform subdirectory.
 #
 
+###########################################
+SHOULD BE REMOVED AFTER TESTING
+###########################################
+
 #
 # These variables are needed for set up the autoconf other variables.
 #
