@@ -4,7 +4,7 @@
 For some reason the Arch Linux community stopped providing an pre-build image for the Raspberry Pi.
 
 ## Pull sources trough git
-git clone https://github.com/remonlam/rpi-docker-apcups.git <br />
+git clone https://github.com/remonlam/docker-apcupsd.git <br />
 cd rpi-docker-apcups <br />
 docker build -t apc-web .
 
@@ -12,7 +12,7 @@ NOTE: building the Docker image could take some time on a RPI2 it takes about 15
 
 ## To run the container:
 
-docker run \ <br>
+docker run / <br>
   --name apcupsd_0.0.1 \ <br>
   --detach \ <br>
   --restart always \ <br>
@@ -35,4 +35,4 @@ docker run -d --name apc-web --hostname $(hostname) -p 80:80 --device=/dev/usb/h
 docker run -d --name apc-man --hostname $(hostname) --device=/dev/usb/hiddev0 remonlam/apcupsd:0.0.1_arm
 
 ## Docker HUB
-The Docker images is also stored @ https://hub.docker.com/r/remonlam/rpi-docker-apcups/
+The Docker images is also stored @ https://hub.docker.com/r/remonlam/apcupsd/
