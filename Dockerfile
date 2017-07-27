@@ -19,6 +19,7 @@ RUN apt-get update && \
 RUN rm -r /etc/default/apcupsd && \
     rm -r /etc/apcupsd/apcupsd.conf && \
     rm -r /etc/apache2/apache2.conf && \
+    rm -r /var/www/html/index.html && \
     rm -r /etc/postfix/master.cf && \
     rm -r /etc/postfix/main.cf && \
     rm -r /etc/aliases
@@ -32,6 +33,7 @@ COPY sources/apcupsd /etc/default/
 COPY sources/apcupsd.conf /etc/apcupsd/
 COPY sources/apccontrol /etc/apcupsd/
 COPY sources/apache2.conf /etc/apache2/
+COPY sources/index.html /var/www/html/
 COPY sources/master.cf /etc/postfix/
 COPY sources/main.cf /etc/postfix/
 COPY sources/aliases /etc/
