@@ -14,6 +14,8 @@ ENV DEBIAN_FRONTEND="noninteractive"
 #    apt-get clean && \
 #    rm -rf /var/lib/apt/lists/*
 
+RUN apk add apcupsd apcupsd-webif apache2 postfix mailutils
+
 # Remove orginal apcupsd config files
 #RUN rm -r /etc/default/apcupsd && \
 #    rm -r /etc/apcupsd/apcupsd.conf && \
