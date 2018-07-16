@@ -17,7 +17,6 @@ ENV DEBIAN_FRONTEND="noninteractive"
 RUN apk add apcupsd apcupsd-webif apache2 postfix && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing mailutils && \
     rm -f /var/cache/apk/*
-    # add mailutils later
 
 # Remove orginal apcupsd config files
 #RUN rm -r /etc/default/apcupsd && \
