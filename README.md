@@ -1,5 +1,5 @@
 # Create an APC Web Management Docker image.
-[APC](/images/banner.png)
+![APC](/images/banner.png)
 
 For some reason the Arch Linux community stopped providing an pre-build image for the Raspberry Pi.
 
