@@ -19,11 +19,14 @@ RUN apk add apcupsd apcupsd-webif apache2 postfix && \
     rm -f /var/cache/apk/*
 
 # Remove orginal apcupsd config files
-#RUN rm -r /etc/default/apcupsd && \
+RUN rm -r /etc/default/apcupsd && \
+    rm -r /etc/apcupsd/apcupsd.conf && \
 #    rm -r /etc/apcupsd/apcupsd.conf && \
 #    rm -r /etc/apache2/apache2.conf && \
-#    rm -r /etc/postfix/master.cf && \
-#    rm -r /etc/postfix/main.cf && \
+    rm -r /etc/apache2/apache2.conf && \
+    rm -r /etc/apache2/httpd.conf && \
+    rm -r /etc/postfix/master.cf && \
+    rm -r /etc/postfix/main.cf && \
 #    rm -r /etc/aliases
 
 # Set date/time
@@ -53,4 +56,4 @@ RUN apk add apcupsd apcupsd-webif apache2 postfix && \
 #RUN service apache2 start
 
 EXPOSE 80 3551/tcp 3551/udp
-CMD ["/entrypoint.sh"]
+#CMD ["/entrypoint.sh"]

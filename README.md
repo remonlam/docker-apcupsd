@@ -24,13 +24,13 @@ docker run \ <br>
   --device=/dev/usb/hiddev0 \ <br>
   remonlam/apcupsd:0.0.1_arm <br>
 
-  docker run \ <br>
-    --name apcupsd_man_0.0.1 \ <br>
-    --detach \ <br>
-    --restart always \ <br>
-    --hostname $(hostname) \ <br>
-    --device=/dev/usb/hiddev0 \ <br>
-    remonlam/apcupsd:0.0.1_arm <br>
+docker run \ <br>
+  --name apcupsd_man_0.0.1 \ <br>
+  --detach \ <br>
+  --restart always \ <br>
+  --hostname $(hostname) \ <br>
+  --device=/dev/usb/hiddev0 \ <br>
+  remonlam/apcupsd:0.0.1_arm <br>
 
 
 docker run -d --name apc-web --hostname $(hostname) -p 80:80 --device=/dev/usb/hiddev0 remonlam/rpi-docker-apcups:latest <br>
