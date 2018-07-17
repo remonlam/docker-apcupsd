@@ -14,19 +14,18 @@ ENV DEBIAN_FRONTEND="noninteractive"
 #    apt-get clean && \
 #    rm -rf /var/lib/apt/lists/*
 
-RUN apk add apcupsd apcupsd-webif apache2 postfix && \
+RUN apk add apcupsd apcupsd-webif apache2 postfix tzdata && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing mailutils && \
     rm -f /var/cache/apk/*
 
 # Remove orginal apcupsd config files
-RUN rm -r /etc/default/apcupsd && \
-    rm -r /etc/apcupsd/apcupsd.conf && \
+RUN rm -r /etc/apcupsd/apcupsd.conf && \
 #    rm -r /etc/apcupsd/apcupsd.conf && \
 #    rm -r /etc/apache2/apache2.conf && \
-    rm -r /etc/apache2/apache2.conf && \
+#    rm -r /etc/apache2/apache2.conf && \
     rm -r /etc/apache2/httpd.conf && \
     rm -r /etc/postfix/master.cf && \
-    rm -r /etc/postfix/main.cf && \
+    rm -r /etc/postfix/main.cf
 #    rm -r /etc/aliases
 
 # Set date/time
