@@ -20,7 +20,7 @@ docker run \ <br>
   --restart always \ <br>
   --hostname $(hostname) \ <br>
   --publish 80:80 \ <br>
-  --env MAILRELAY="containerstack-io.mail.protection.outlook.com" \<br>
+  --env MAILRELAY="containerstack-io.mail.protection.outlook.com" \ <br>
   --device=/dev/usb/hiddev0 \ <br>
   remonlam/apcupsd:0.0.1_arm <br>
 
