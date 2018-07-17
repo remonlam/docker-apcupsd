@@ -34,18 +34,18 @@ RUN cp -rf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 # Copy sources
 #COPY entrypoint.sh /
 #COPY sources/apcupsd /etc/default/
-COPY sources/apcupsd.conf /etc/apcupsd/
+COPY /sources/apcupsd.conf /etc/apcupsd/apcupsd.conf
 COPY sources/apccontrol /etc/apcupsd/
 COPY sources/apache2.conf /etc/apache2/httpd.conf
 COPY sources/master.cf /etc/postfix/
 COPY sources/main.cf /etc/postfix/
-#COPY sources/aliases /etc/
+COPY sources/aliases /etc/
 
 # Create aliases
-#RUN newaliases
+RUN newaliases
 
 # Create apache dir
-#RUN mkdir -p /etc/apache2/conf.d
+RUN mkdir -p /etc/apache2/conf.d
 
 # Restart apcupsd service
 #RUN service apcupsd stop
@@ -55,4 +55,4 @@ COPY sources/main.cf /etc/postfix/
 #RUN service apache2 start
 
 EXPOSE 80 3551/tcp 3551/udp
-#CMD ["/entrypoint.sh"]
+CMD ["/entrypoint.sh"]
