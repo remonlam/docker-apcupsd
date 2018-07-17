@@ -14,7 +14,7 @@ ENV DEBIAN_FRONTEND="noninteractive"
 #    apt-get clean && \
 #    rm -rf /var/lib/apt/lists/*
 
-RUN apk add apcupsd apcupsd-webif apache2 postfix tzdata && \
+RUN apk add apcupsd apcupsd-webif apache2 postfix tzdata openrc && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing mailutils && \
     rm -f /var/cache/apk/*
 
