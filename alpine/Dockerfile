@@ -29,16 +29,16 @@ RUN rm -r /etc/apcupsd/apcupsd.conf && \
 #    rm -r /etc/aliases
 
 # Set date/time
-#RUN cp -rf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
+RUN cp -rf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 
 # Copy sources
 #COPY entrypoint.sh /
 #COPY sources/apcupsd /etc/default/
-#COPY sources/apcupsd.conf /etc/apcupsd/
-#COPY sources/apccontrol /etc/apcupsd/
-#COPY sources/apache2.conf /etc/apache2/
-#COPY sources/master.cf /etc/postfix/
-#COPY sources/main.cf /etc/postfix/
+COPY sources/apcupsd.conf /etc/apcupsd/
+COPY sources/apccontrol /etc/apcupsd/
+COPY sources/apache2.conf /etc/apache2/httpd.conf
+COPY sources/master.cf /etc/postfix/
+COPY sources/main.cf /etc/postfix/
 #COPY sources/aliases /etc/
 
 # Create aliases
